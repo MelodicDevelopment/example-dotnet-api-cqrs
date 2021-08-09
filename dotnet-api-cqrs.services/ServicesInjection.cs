@@ -7,6 +7,7 @@ namespace dotnet_api_cqrs.services
 	{
 		public static void Configure(IServiceCollection services)
 		{
+			services.AddScoped<IAuthorService, AuthorService>();
 			services.AddScoped<IBookService, BookService>();
 		}
 	}

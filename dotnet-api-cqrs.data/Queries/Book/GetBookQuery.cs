@@ -1,34 +1,41 @@
-﻿using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using dotnet_api_cqrs.data.Interfaces;
 using D = dotnet_api_cqrs.dto;
 
 namespace dotnet_api_cqrs.data.Queries.Book
 {
-	public class GetAllBooksQuery : IQuery<IEnumerable<D.Book>>
+	public class GetBookQuery : IQuery<D.Book>
 	{
+		private readonly int _bookID;
+
 		public string Sql { get; set; }
 
-		public GetAllBooksQuery()
+		public GetBookQuery(int bookID)
 		{
-			Sql = @$"
+			_bookID = bookID;
+
+			Sql = $@"
 SELECT				BookID,
 					Title,
 					CopyRightYear,
 					AuthorID
 FROM				dbo.Books
-ORDER BY			Title";
+WHERE				BookID = @BookID;";
 		}
 
 		/// <summary>
 		/// This is an example. Since I don't have a real database setup, I'm just returning hard coded data.
 		/// However, I have the actual code commented out so you can see how it works if there really were a database.
 		/// </summary>
-		public IEnumerable<D.Book> Execute(IDbContext context, IDbTransaction transaction = null)
+		public D.Book Execute(IDbContext context, IDbTransaction transaction = null)
 		{
-			// return context.Query<D.Book>(Sql, transaction: transaction);
+			//var param = new {
+			//	BookID = _bookID
+			//};
 
-			return TestData.Books;
+			//return context.QueryFirst<D.Author>(Sql, param, transaction: transaction);
+
+			return TestData.Books.Find(b => b.BookID == _bookID);
 		}
 	}
 }

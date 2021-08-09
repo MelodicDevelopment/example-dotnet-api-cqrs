@@ -24,5 +24,17 @@ namespace dotnet_api_cqrs.api.Controllers
 		{
 			return _bookService.GetAllBooks();
 		}
+
+		[HttpGet("{bookID:int}")]
+		public Book Get(int bookID)
+		{
+			return _bookService.GetBook(bookID);
+		}
+
+		[HttpGet("author/{authorID:int}")]
+		public IEnumerable<Book> GetForAuthor(int authorID)
+		{
+			return _bookService.GetBooksForAuthor(authorID);
+		}
 	}
 }

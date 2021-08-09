@@ -7,6 +7,7 @@ namespace dotnet_api_cqrs.services.Interfaces
 	{
 		IEnumerable<Book> GetAllBooks();
 		Book GetBook(int bookID);
+		IEnumerable<Book> GetBooksForAuthor(int authorID);
 		Book InsertBook(Book book);
 		void DeleteBook(int bookID);
 	}

@@ -1,23 +1,29 @@
 ﻿using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using dotnet_api_cqrs.data.Interfaces;
 using D = dotnet_api_cqrs.dto;
 
 namespace dotnet_api_cqrs.data.Queries.Book
 {
-	public class GetAllBooksQuery : IQuery<IEnumerable<D.Book>>
+	public class GetBooksForAuthorQuery : IQuery<IEnumerable<D.Book>>
 	{
+		private readonly int _authorID;
+
 		public string Sql { get; set; }
 
-		public GetAllBooksQuery()
+		public GetBooksForAuthorQuery(int authorID)
 		{
-			Sql = @$"
+			_authorID = authorID;
+
+			Sql = $@"
 SELECT				BookID,
 					Title,
 					CopyRightYear,
 					AuthorID
 FROM				dbo.Books
-ORDER BY			Title";
+WHERE				AuthorID = @AuthorID
+ORDER BY			CopyRightYear, Title;";
 		}
 
 		/// <summary>
@@ -26,9 +32,13 @@ ORDER BY			Title";
 		/// </summary>
 		public IEnumerable<D.Book> Execute(IDbContext context, IDbTransaction transaction = null)
 		{
-			// return context.Query<D.Book>(Sql, transaction: transaction);
+			//var param = new {
+			//	AuthorID = _authorID
+			//};
 
-			return TestData.Books;
+			//return context.Query<D.Author>(Sql, param, transaction: transaction);
+
+			return TestData.Books.Where(b => b.AuthorID == _authorID);
 		}
 	}
 }

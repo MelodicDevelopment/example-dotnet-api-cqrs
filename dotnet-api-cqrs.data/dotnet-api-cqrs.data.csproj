@@ -13,6 +13,9 @@
     <None Remove="Commands\" />
     <None Remove="Queries\Book\" />
     <None Remove="Queries\Author\" />
+    <None Remove="Commands\Book\" />
+    <None Remove="Commands\Author\" />
+    <None Remove="_data\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -20,6 +23,8 @@
     <Folder Include="Commands\" />
     <Folder Include="Queries\Book\" />
     <Folder Include="Queries\Author\" />
+    <Folder Include="Commands\Book\" />
+    <Folder Include="Commands\Author\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.90" />

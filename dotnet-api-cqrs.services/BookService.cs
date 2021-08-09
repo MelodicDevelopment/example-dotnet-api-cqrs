@@ -16,12 +16,17 @@ namespace dotnet_api_cqrs.services
 
 		public IEnumerable<Book> GetAllBooks()
 		{
-			return _bookFacade.GetAllBooks()(Context, null);
+			return _bookFacade.GetBooks()(Context, null);
 		}
 
 		public Book GetBook(int bookID)
 		{
 			return _bookFacade.GetBook(bookID)(Context, null);
+		}
+
+		public IEnumerable<Book> GetBooksForAuthor(int authorID)
+		{
+			return _bookFacade.GetBooksForAuthor(authorID)(Context, null);
 		}
 
 		public Book InsertBook(Book book)

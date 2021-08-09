@@ -9,7 +9,7 @@ namespace dotnet_api_cqrs.data.Interfaces
 	{
 		Func<IDbContext, IDbTransaction, IEnumerable<Author>> GetAuthors();
 		Func<IDbContext, IDbTransaction, Author> GetAuthor(int authorID);
-		Action<IDbContext, IDbTransaction> InsertAuthor(Author author);
+		Func<IDbContext, IDbTransaction, int> InsertAuthor(Author author);
 		Action<IDbContext, IDbTransaction> DeleteAuthor(int authorID);
 	}
 }

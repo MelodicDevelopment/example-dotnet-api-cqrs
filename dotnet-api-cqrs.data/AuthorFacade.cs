@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using dotnet_api_cqrs.data.Commands.Author;
 using dotnet_api_cqrs.data.Interfaces;
+using dotnet_api_cqrs.data.Queries.Author;
 using dotnet_api_cqrs.dto;
 
 namespace dotnet_api_cqrs.data
@@ -10,22 +12,22 @@ namespace dotnet_api_cqrs.data
 	{
 		public Func<IDbContext, IDbTransaction, IEnumerable<Author>> GetAuthors()
 		{
-			throw new NotImplementedException();
+			return Prepare(new GetAllAuthorsQuery());
 		}
 
 		public Func<IDbContext, IDbTransaction, Author> GetAuthor(int authorID)
 		{
-			throw new NotImplementedException();
+			return Prepare(new GetAuthorQuery(authorID));
 		}
 
-		public Action<IDbContext, IDbTransaction> InsertAuthor(Author author)
+		public Func<IDbContext, IDbTransaction, int> InsertAuthor(Author author)
 		{
-			throw new NotImplementedException();
+			return Prepare<int>(new InsertAuthorCommand(author));
 		}
 
 		public Action<IDbContext, IDbTransaction> DeleteAuthor(int authorID)
 		{
-			throw new NotImplementedException();
+			return Prepare(new DeleteAuthorCommand(authorID));
 		}
 	}
 }
