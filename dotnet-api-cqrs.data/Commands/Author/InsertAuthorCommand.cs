@@ -20,14 +20,20 @@ INSERT INTO			dbo.Authors
 VALUES				(@FirstName, @LastName);";
 		}
 
+		/// <summary>
+		/// This is an example. Since I don't have a real database setup, I'm just returning hard coded data.
+		/// However, I have the actual code commented out so you can see how it works if there really were a database.
+		/// </summary>
 		public int Execute(IDbContext context, IDbTransaction transaction = null)
 		{
-			var param = new {
-				FirstName = _author.FirstName,
-				LastName = _author.LastName
-			};
+			//var param = new {
+			//	FirstName = _author.FirstName,
+			//	LastName = _author.LastName
+			//};
 
-			return context.Command(Sql, param, transaction: transaction);
+			//return context.InsertSingle(Sql, param, transaction: transaction);
+
+			return 1;
 		}
 	}
 }

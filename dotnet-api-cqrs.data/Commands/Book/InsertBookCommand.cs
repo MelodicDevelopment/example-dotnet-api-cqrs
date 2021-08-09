@@ -20,15 +20,21 @@ INSERT INTO			dbo.Books
 VALUES				(@Title, @CopyRightYear, AuthorID);";
 		}
 
+		/// <summary>
+		/// This is an example. Since I don't have a real database setup, I'm just returning hard coded data.
+		/// However, I have the actual code commented out so you can see how it works if there really were a database.
+		/// </summary>
 		public int Execute(IDbContext context, IDbTransaction transaction = null)
 		{
-			var param = new {
-				Title = _book.Title,
-				CopyRightYear = _book.CopyRightYear,
-				AuthorID = _book.AuthorID
-			};
+			//var param = new {
+			//	Title = _book.Title,
+			//	CopyRightYear = _book.CopyRightYear,
+			//	AuthorID = _book.AuthorID
+			//};
 
-			return context.Command(Sql, param, transaction: transaction);
+			//return context.InsertSingle(Sql, param, transaction: transaction);
+
+			return 1;
 		}
 	}
 }

@@ -36,5 +36,18 @@ namespace dotnet_api_cqrs.api.Controllers
 		{
 			return _bookService.GetBooksForAuthor(authorID);
 		}
+
+		[HttpPost]
+		public Book Post(Book book)
+		{
+			return _bookService.InsertBook(book);
+		}
+
+		[HttpDelete("{bookID:int}")]
+		public IActionResult Delete(int bookID)
+		{
+			_bookService.DeleteBook(bookID);
+			return Ok();
+		}
 	}
 }
