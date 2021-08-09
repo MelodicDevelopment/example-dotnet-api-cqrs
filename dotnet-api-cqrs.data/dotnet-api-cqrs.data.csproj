@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Interfaces\" />
     <None Remove="Dapper" />
     <None Remove="Microsoft.Data.SqlClient" />
     <None Remove="Queries\" />
@@ -18,7 +17,6 @@
     <None Remove="_data\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interfaces\" />
     <Folder Include="Queries\" />
     <Folder Include="Commands\" />
     <Folder Include="Queries\Book\" />
@@ -31,9 +29,9 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="3.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\dotnet-api-cqrs.dto\dotnet-api-cqrs.dto.csproj" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <ProjectReference Include="..\dotnet-api-cqrs.contracts\dotnet-api-cqrs.contracts.csproj" />
   </ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using dotnet_api_cqrs.data.Interfaces;
-using dotnet_api_cqrs.dto;
-using dotnet_api_cqrs.services.Interfaces;
+using dotnet_api_cqrs.contracts.data;
+using dotnet_api_cqrs.contracts.dto;
+using dotnet_api_cqrs.contracts.services;
 
 namespace dotnet_api_cqrs.services
 {

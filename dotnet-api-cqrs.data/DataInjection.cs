@@ -1,4 +1,4 @@
-﻿using dotnet_api_cqrs.data.Interfaces;
+﻿using dotnet_api_cqrs.contracts.data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using Dapper;
-using dotnet_api_cqrs.data.Interfaces;
+using dotnet_api_cqrs.contracts.data;
 using Microsoft.Data.SqlClient;
 
 namespace dotnet_api_cqrs.data
@@ -29,7 +29,7 @@ namespace dotnet_api_cqrs.data
 			_connectionString = connectionString;
 		}
 
-		public T QueryFirst<T>(string query, object param = null, CommandType commandType = CommandType.Text, IDbTransaction transaction = null)
+		public virtual T QueryFirst<T>(string query, object param = null, CommandType commandType = CommandType.Text, IDbTransaction transaction = null)
 		{
 			if (transaction == null) {
 				return Transaction(_transaction => {
@@ -41,7 +41,7 @@ namespace dotnet_api_cqrs.data
 			}
 		}
 
-		public IEnumerable<T> Query<T>(string query, object param = null, CommandType commandType = CommandType.Text, IDbTransaction transaction = null)
+		public virtual IEnumerable<T> Query<T>(string query, object param = null, CommandType commandType = CommandType.Text, IDbTransaction transaction = null)
 		{
 			if (transaction == null) {
 				return Transaction(_transaction => {
@@ -53,7 +53,7 @@ namespace dotnet_api_cqrs.data
 			}
 		}
 
-		public int InsertSingle(string sql, object param = null, CommandType commandType = CommandType.Text, IDbTransaction transaction = null, int? timeout = null)
+		public virtual int InsertSingle(string sql, object param = null, CommandType commandType = CommandType.Text, IDbTransaction transaction = null, int? timeout = null)
 		{
 			var idQueryCheck = "CAST(SCOPE_IDENTITY() AS INT)";
 
@@ -72,7 +72,7 @@ SELECT {idQueryCheck};";
 			}
 		}
 
-		public int Command(string sql, object param = null, CommandType commandType = CommandType.Text, IDbTransaction transaction = null, int? timeout = null)
+		public virtual int Command(string sql, object param = null, CommandType commandType = CommandType.Text, IDbTransaction transaction = null, int? timeout = null)
 		{
 			if (transaction == null) {
 				return Transaction(_transaction => Connection.Execute(sql, param, _transaction, commandType: commandType, commandTimeout: timeout));
@@ -81,7 +81,7 @@ SELECT {idQueryCheck};";
 			}
 		}
 
-		public T Transaction<T>(Func<IDbTransaction, T> query)
+		public virtual T Transaction<T>(Func<IDbTransaction, T> query)
 		{
 			using var connection = Connection;
 			using var transaction = BeginTransaction();
@@ -97,7 +97,7 @@ SELECT {idQueryCheck};";
 			}
 		}
 
-		public void Transaction(Action<IDbTransaction> query)
+		public virtual void Transaction(Action<IDbTransaction> query)
 		{
 			using var connection = Connection;
 			using var transaction = BeginTransaction();
@@ -111,7 +111,7 @@ SELECT {idQueryCheck};";
 			}
 		}
 
-		private IDbTransaction BeginTransaction()
+		protected IDbTransaction BeginTransaction()
 		{
 			if (_transaction == null || _transaction.Connection == null) {
 				_transaction = Connection.BeginTransaction();

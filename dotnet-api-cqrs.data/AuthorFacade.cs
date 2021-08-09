@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using dotnet_api_cqrs.contracts.data;
+using dotnet_api_cqrs.contracts.dto;
 using dotnet_api_cqrs.data.Commands.Author;
-using dotnet_api_cqrs.data.Interfaces;
 using dotnet_api_cqrs.data.Queries.Author;
-using dotnet_api_cqrs.dto;
 
 namespace dotnet_api_cqrs.data
 {

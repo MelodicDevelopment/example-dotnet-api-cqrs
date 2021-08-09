@@ -6,10 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\dotnet-api-cqrs.dto\dotnet-api-cqrs.dto.csproj">
+    <ProjectReference Include="..\dotnet-api-cqrs.services\dotnet-api-cqrs.services.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
-    <ProjectReference Include="..\dotnet-api-cqrs.services\dotnet-api-cqrs.services.csproj">
+    <ProjectReference Include="..\dotnet-api-cqrs.data\dotnet-api-cqrs.data.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using dotnet_api_cqrs.dto;
+using dotnet_api_cqrs.contracts.dto;
 
-namespace dotnet_api_cqrs.data.Interfaces
+namespace dotnet_api_cqrs.contracts.data
 {
 	public interface IAuthorFacade
 	{

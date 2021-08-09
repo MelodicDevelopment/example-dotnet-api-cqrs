@@ -1,4 +1,4 @@
-﻿namespace dotnet_api_cqrs.dto
+﻿namespace dotnet_api_cqrs.contracts.dto
 {
 	public class Author
 	{

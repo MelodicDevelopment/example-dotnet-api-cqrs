@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace dotnet_api_cqrs.data.Interfaces
+namespace dotnet_api_cqrs.contracts.data
 {
 	public interface IQuery<T>
 	{

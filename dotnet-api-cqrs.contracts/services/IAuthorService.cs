@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using dotnet_api_cqrs.dto;
+using dotnet_api_cqrs.contracts.dto;
 
-namespace dotnet_api_cqrs.services.Interfaces
+namespace dotnet_api_cqrs.contracts.services
 {
 	public interface IAuthorService
 	{

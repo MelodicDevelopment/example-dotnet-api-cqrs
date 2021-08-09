@@ -6,13 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Interfaces\" />
+    <ProjectReference Include="..\dotnet-api-cqrs.contracts\dotnet-api-cqrs.contracts.csproj" />
   </ItemGroup>
+
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\dotnet-api-cqrs.data\dotnet-api-cqrs.data.csproj" />
-    <ProjectReference Include="..\dotnet-api-cqrs.dto\dotnet-api-cqrs.dto.csproj" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 </Project>

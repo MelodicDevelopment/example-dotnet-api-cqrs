@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using dotnet_api_cqrs.dto;
-using dotnet_api_cqrs.services.Interfaces;
+using dotnet_api_cqrs.contracts.dto;
+using dotnet_api_cqrs.contracts.services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 

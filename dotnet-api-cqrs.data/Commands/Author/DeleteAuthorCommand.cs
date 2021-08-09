@@ -1,5 +1,5 @@
 ﻿using System.Data;
-using dotnet_api_cqrs.data.Interfaces;
+using dotnet_api_cqrs.contracts.data;
 
 namespace dotnet_api_cqrs.data.Commands.Author
 {
