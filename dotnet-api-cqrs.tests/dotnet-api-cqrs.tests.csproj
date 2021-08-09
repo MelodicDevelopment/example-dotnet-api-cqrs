@@ -18,18 +18,32 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Moq" Version="4.16.1" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="5.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="5.0.8" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Data\" />
     <None Remove="Data\Book\" />
+    <None Remove="Services\" />
+    <None Remove="Moq" />
+    <None Remove="Api\" />
+    <None Remove="Api\Controllers\" />
+    <None Remove="Microsoft.AspNetCore.TestHost" />
+    <None Remove="Microsoft.AspNetCore.Mvc.Testing" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Data\Book\" />
+    <Folder Include="Services\" />
+    <Folder Include="Api\" />
+    <Folder Include="Api\Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\dotnet-api-cqrs.contracts\dotnet-api-cqrs.contracts.csproj" />
     <ProjectReference Include="..\dotnet-api-cqrs.data\dotnet-api-cqrs.data.csproj" />
+    <ProjectReference Include="..\dotnet-api-cqrs.services\dotnet-api-cqrs.services.csproj" />
+    <ProjectReference Include="..\dotnet-api-cqrs.api\dotnet-api-cqrs.api.csproj" />
   </ItemGroup>
 </Project>
