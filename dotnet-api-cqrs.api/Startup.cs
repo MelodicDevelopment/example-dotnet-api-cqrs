@@ -20,8 +20,9 @@ namespace dotnet_api_cqrs.api
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-
 			services.AddControllers();
+
+			services.AddSwaggerGen();
 
 			DataInjection.Configure(services, Configuration);
 			ServicesInjection.Configure(services);
@@ -33,6 +34,11 @@ namespace dotnet_api_cqrs.api
 			if (env.IsDevelopment()) {
 				app.UseDeveloperExceptionPage();
 			}
+
+			app.UseSwagger();
+			app.UseSwaggerUI(c => {
+				c.SwaggerEndpoint("/swagger/v1/swagger.json", ".Net Api CQRS");
+			});
 
 			app.UseHttpsRedirection();
 			app.UseRouting();
